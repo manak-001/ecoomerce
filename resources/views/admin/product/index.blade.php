@@ -26,6 +26,7 @@
                     <td>
                       @foreach($value->productcategory as $category)
                         {{$category->category->name}}
+                        
                         @endforeach
                     </td>
                     <td>{{$value->price}}</td>

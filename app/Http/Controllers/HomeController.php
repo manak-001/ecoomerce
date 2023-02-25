@@ -30,6 +30,9 @@ class HomeController extends Controller
         Auth::logout();
         return redirect('/login/');
       }
+      public function login() {
+       return redirect('/login/');
+      }
     public function index()
     {
         $product = Product::all();

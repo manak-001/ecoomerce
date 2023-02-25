@@ -4,7 +4,8 @@
 <div class="col-md-12">
     <div class="card">
         <div class="card-header">
-            <a href="{{route('add.subcategory')}}" class="btn btn-primary " style="margin-left:95%">Add</a>
+            Sub Category
+            <a href="{{route('add.subcategory')}}" class="btn btn-primary " style="float:right">Add</a>
         </div>
         <table class="table" border="1px">
             <thead>

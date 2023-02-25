@@ -16,14 +16,18 @@
                     <h5 style="margin-top:20px">{{Ucfirst($product->name)}}</h5>
                 </b></br>
                 <label>Categoery : </label>
+                <?php $categorys = array(); ?>
                 @foreach($produc_addon as $addon)
-                {{$addon->name}},
+                <?php $categorys[] = $addon->name; ?>
                 @endforeach
-</br>
+                {{implode(",", $categorys);}}
+                </br>
+                <?php $sub_categorys = array(); ?>
                 <label>Addon : </label>
                 @foreach($sub_cates as $sub_cates)
-                {{$sub_cates->name}}
-                 @endforeach
+                <?php $sub_categorys[] = $sub_cates->name; ?> 
+                @endforeach
+                {{implode(",", $sub_categorys);}}   
                 <b>
                     <h6>${{$product->price}}</h6>
                 </b>

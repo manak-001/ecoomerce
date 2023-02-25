@@ -78,6 +78,9 @@ class ProductController extends Controller
         $Product->image = $path;
         $Product->description = $request->get('description');
         $Product->save();
+        if($request->has('category')){
+            ProductAddon::where('product_id',$Product->id)->delete();
+        }
         foreach($request->get('category') as $pruduct_cate)
         {
             $product_addon = new ProductAddon();

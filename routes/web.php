@@ -25,8 +25,9 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::group(['prefix' => 'admin','middleware'=>'auth'], function () {
+    Route::get('/',[HomeController::class,'login']);
     Route::get('logout',[HomeController::class,'logout'])->name('logout');
-   Route::group(['prefix' => 'category'], function () {
+    Route::group(['prefix' => 'category'], function () {
         Route::get('/', [categoryController::class, 'index'])->name('category.list');
         Route::get('add', [categoryController::class, 'add'])->name('add.category');
         Route::post('create', [categoryController::class, 'create'])->name('create.category');

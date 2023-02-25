@@ -4,7 +4,8 @@
 <div class="col-md-12">
     <div class="card">
         <div class="card-header">
-            <a href="{{route('add.product')}}" class="btn btn-primary float-end" style="margin-left:95%">Add</a>
+            Product
+            <a href="{{route('add.product')}}" class="btn btn-primary float-end" style="float:right">Add</a>
         </div>
         <table class="table" border="1px">
             <thead>
@@ -23,11 +24,13 @@
                 <tr>
                     <td>{{$value->id}}</td>
                     <td>{{$value->name}}</td>
-                    <td>
-                      @foreach($value->productcategory as $category)
-                        {{$category->category->name}}
-                        
-                        @endforeach
+                    <td><?php 
+                    $comma_string = array();?>
+                        @foreach($value->productcategory as $category)
+                        <?php 
+                        $comma_string[] = $category->category->name;?>
+                         @endforeach
+                         {{implode(",", $comma_string)}}
                     </td>
                     <td>{{$value->price}}</td>
                     <td><img src="{{asset( 'storage/'.$value->image)}}" width="100"></td>

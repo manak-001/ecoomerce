@@ -42,7 +42,6 @@ class subcategoryController extends Controller
          $subcategory = subcategory::find($id);
        $cate = Category::all();
         $addon = Addon::where('subcate_id',$subcategory->id)->get();
-       
      return view('admin.subcategeory.edit')->with(['data' => $subcategory, 'cates' => $cate ,'addon'=>$addon]);
     }
 
@@ -51,6 +50,10 @@ class subcategoryController extends Controller
         $subcategory = subcategory::find($request->get('id'));
         $subcategory->name = $request->get('name');
        $subcategory->save();
+       if($request->has('subcategoery'))
+       {
+        Addon::where('subcate_id',$subcategory->id)->delete();
+       }
         foreach ($request->get('subcategoery') as $sub_cates) {
             $addon = new Addon;
             $addon->subcate_id =  $subcategory->id;
